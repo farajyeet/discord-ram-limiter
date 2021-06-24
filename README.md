@@ -12,7 +12,7 @@ By using the function called ```GC.Collect();``` reduces memory usage by prevent
 If you open the program with DEBUG mode in Visual Studio, the CPU usage of the program may be high. We recommend that you run your program test after compiling as Release AnyCPU.
 
 # Download
-[Download exe](https://github.com/faraaj/discord-ram-limiter/raw/main/DiscordRamLimiter/bin/Release/DiscordRamLimiter.exe)
+[Download exe](https://github.com/faraaj/discord-ram-limiter/releases/download/1/DiscordRamLimiter.exe)
 
 # Credits
 [Lufzys](https://github.com/Lufzys)
