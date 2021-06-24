@@ -59,7 +59,7 @@ namespace DiscordRamLimiter
                         var percent = ((memoryValues.TotalVisibleMemorySize - memoryValues.FreePhysicalMemory) / memoryValues.TotalVisibleMemorySize) * 100;
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine("Your current memory usage : {0}", percent);
-                        Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Developers: faraj#2607 - miaf#2458");
+                        Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Developers: miaf#2458 - faraj#2607");
                         Thread.Sleep(600);
                     }
 
