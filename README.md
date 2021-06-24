@@ -1,2 +1,2 @@
-# discord-ram-limiter
-A program that limits the memory usage of the program called Discord.
+# Discord ram limiter
+By using the function called ```cs GC.Collect();``` reduces memory usage by preventing unnecessary cache in the program.
