@@ -10,3 +10,5 @@ By using the function called ```GC.Collect();``` reduces memory usage by prevent
 
 # Credits
 [Lufzys](https://github.com/Lufzys)
+
+This project is licensed under the terms of [MIT License](https://github.com/faraaj/discord-ram-limiter/blob/main/LICENSE)
