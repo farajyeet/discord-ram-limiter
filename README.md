@@ -1,5 +1,5 @@
 # Discord ram limiter
-By using the function called ```GC.Collect();``` reduces memory usage by preventing unnecessary cache in the program.
+By using the function called ```SetProcessWorkingSetSize();``` reduces memory usage by preventing unnecessary cache in the program.
 
 # Screenshots
 <img style src="https://raw.githubusercontent.com/faraaj/discord-ram-limiter/main/Screenshots/unknown.png"/>
