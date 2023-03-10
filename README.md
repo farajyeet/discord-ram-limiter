@@ -14,3 +14,5 @@ All credit to the original creators faraj and miaf! You can find their original 
 ![alt text](https://raw.githubusercontent.com/UncleTyrone/discord-ram-limiter/main/Screenshots/Process.png)
 ![alt text](https://raw.githubusercontent.com/UncleTyrone/discord-ram-limiter/main/Screenshots/Tray.png)
 
+# Release
+[Download here!](https://github.com/UncleTyrone/discord-ram-limiter/releases/tag/2)
