@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31129.286
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordRamLimiter", "DiscordRamLimiter\DiscordRamLimiter.csproj", "{A73F5DA8-E68D-4128-B793-19C582F17DC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordRamLimiter", "DiscordRamLimiter\DiscordRamLimiter.csproj", "{96F81682-CF45-4A45-B429-BF5B4EBB8CA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A73F5DA8-E68D-4128-B793-19C582F17DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A73F5DA8-E68D-4128-B793-19C582F17DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A73F5DA8-E68D-4128-B793-19C582F17DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A73F5DA8-E68D-4128-B793-19C582F17DC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96F81682-CF45-4A45-B429-BF5B4EBB8CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96F81682-CF45-4A45-B429-BF5B4EBB8CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96F81682-CF45-4A45-B429-BF5B4EBB8CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96F81682-CF45-4A45-B429-BF5B4EBB8CA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7570B44D-A029-4091-8C44-D96C5FC9F077}
+		SolutionGuid = {B563B8C9-5405-4D6F-B173-4E3981B84A4B}
 	EndGlobalSection
 EndGlobal
