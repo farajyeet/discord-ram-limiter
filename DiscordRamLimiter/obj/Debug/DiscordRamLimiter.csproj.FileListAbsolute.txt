@@ -1,0 +1,11 @@
+C:\Users\jeffr\Desktop\DiscordRamLimiter\DiscordRamLimiter\DiscordRamLimiter\bin\Debug\DiscordRamLimiter.exe.config
+C:\Users\jeffr\Desktop\DiscordRamLimiter\DiscordRamLimiter\DiscordRamLimiter\bin\Debug\DiscordRamLimiter.exe
+C:\Users\jeffr\Desktop\DiscordRamLimiter\DiscordRamLimiter\DiscordRamLimiter\bin\Debug\DiscordRamLimiter.pdb
+C:\Users\jeffr\Desktop\DiscordRamLimiter\DiscordRamLimiter\DiscordRamLimiter\obj\Debug\DiscordRamLimiter.csproj.AssemblyReference.cache
+C:\Users\jeffr\Desktop\DiscordRamLimiter\DiscordRamLimiter\DiscordRamLimiter\obj\Debug\DiscordRamLimiter.csproj.SuggestedBindingRedirects.cache
+C:\Users\jeffr\Desktop\DiscordRamLimiter\DiscordRamLimiter\DiscordRamLimiter\obj\Debug\DiscordRamLimiter.Form1.resources
+C:\Users\jeffr\Desktop\DiscordRamLimiter\DiscordRamLimiter\DiscordRamLimiter\obj\Debug\DiscordRamLimiter.Properties.Resources.resources
+C:\Users\jeffr\Desktop\DiscordRamLimiter\DiscordRamLimiter\DiscordRamLimiter\obj\Debug\DiscordRamLimiter.csproj.GenerateResource.cache
+C:\Users\jeffr\Desktop\DiscordRamLimiter\DiscordRamLimiter\DiscordRamLimiter\obj\Debug\DiscordRamLimiter.csproj.CoreCompileInputs.cache
+C:\Users\jeffr\Desktop\DiscordRamLimiter\DiscordRamLimiter\DiscordRamLimiter\obj\Debug\DiscordRamLimiter.exe
+C:\Users\jeffr\Desktop\DiscordRamLimiter\DiscordRamLimiter\DiscordRamLimiter\obj\Debug\DiscordRamLimiter.pdb
