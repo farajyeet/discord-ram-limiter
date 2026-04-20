@@ -1,3 +1,5 @@
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D14-green)
 # Discord ram limiter
 By using the function called ```SetProcessWorkingSetSize();``` reduces memory usage by preventing unnecessary cache in the program.
 
