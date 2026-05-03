@@ -14,8 +14,6 @@ Download the latest build from the GitHub Releases page:
 
 [Download from GitHub Releases](https://github.com/farajyeet/discord-ram-limiter/releases/tag/1)
 
-Replace `https://github.com/farajyeet/discord-ram-limiter/releases/tag/1` with your repository's Releases URL before publishing.
-
 ## Features
 
 - Modern WPF desktop interface.
