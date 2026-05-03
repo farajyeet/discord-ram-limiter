@@ -1,0 +1,33 @@
+# Build output
+bin/
+obj/
+build-verify/
+artifacts/
+publish/
+
+# Local .NET/NuGet working folders
+.dotnet/
+.dotnet-home/
+.nuget/
+
+# Visual Studio / Rider / VS Code local files
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Debug symbols and logs
+*.pdb
+*.log
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Local publish packages
+*.zip
+*.7z
