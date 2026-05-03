@@ -24,8 +24,6 @@ Download the latest build from the GitHub Releases page:
 - Minimize-to-tray behavior.
 - System tray notification when the app is minimized.
 - Tray menu with `Open` and `Exit` actions.
-- Double-click tray icon to reopen the app.
-- Centered custom app icon in the system tray.
 - Supports Discord Stable, Canary, PTB, and Development process names.
 
 ## Supported Discord Processes
