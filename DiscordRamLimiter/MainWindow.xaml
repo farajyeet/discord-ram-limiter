@@ -1,0 +1,265 @@
+<Window x:Class="DiscordRamLimiter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Discord RAM Limiter"
+        Width="430"
+        Height="590"
+        MinWidth="430"
+        MinHeight="590"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Loaded="Window_Loaded"
+        StateChanged="Window_StateChanged"
+        Closing="Window_Closing"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Window.Resources>
+        <Style x:Key="ChromeButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="34" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Background" Value="#202738" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="ChromeButtonSurface"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="False" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ChromeButtonSurface" Property="Opacity" Value="0.78" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ChromeButtonSurface" Property="Opacity" Value="0.62" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="22">
+        <Border CornerRadius="30"
+                BorderThickness="1"
+                BorderBrush="#2A3448">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#121620" Offset="0" />
+                    <GradientStop Color="#181D2A" Offset="0.55" />
+                    <GradientStop Color="#10131B" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30"
+                                  ShadowDepth="0"
+                                  Opacity="0.42"
+                                  Color="#05070C" />
+            </Border.Effect>
+        </Border>
+
+        <Grid Margin="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="52" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="18,8,18,0">
+                <TextBlock Text="Discord RAM Limiter"
+                           VerticalAlignment="Center"
+                           Foreground="#AAB4CD"
+                           FontSize="13"
+                           FontWeight="SemiBold" />
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                    <Button Style="{StaticResource ChromeButtonStyle}"
+                            Click="MinimizeButton_Click"
+                            Background="#202738">
+                        <Path Data="M0,0 L12,0"
+                              Stroke="#AAB4CD"
+                              StrokeThickness="2"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round" />
+                    </Button>
+
+                    <Button Style="{StaticResource ChromeButtonStyle}"
+                            Margin="8,0,0,0"
+                            Click="CloseButton_Click"
+                            Background="#2A2130">
+                        <Path Data="M0,0 L9,9 M9,0 L0,9"
+                              Stroke="#FF8F9B"
+                              StrokeThickness="2"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Grid.Row="1"
+                        Margin="34,8,34,30"
+                        HorizontalAlignment="Center">
+                <Grid Width="104"
+                      Height="104"
+                      Margin="0,0,0,16">
+                    <Border CornerRadius="32"
+                            Background="#141A26"
+                            BorderBrush="#2A3448"
+                            BorderThickness="1">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="24"
+                                              ShadowDepth="0"
+                                              Opacity="0.34"
+                                              Color="#05070C" />
+                        </Border.Effect>
+                    </Border>
+
+                    <Viewbox Width="86"
+                             Height="86"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center">
+                        <Canvas Width="400" Height="400">
+                            <Path Fill="#5865F2"
+                                  Data="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z">
+                                <Path.RenderTransform>
+                                    <TranslateTransform X="72" Y="100" />
+                                </Path.RenderTransform>
+                            </Path>
+                            <Ellipse Canvas.Left="35"
+                                     Canvas.Top="35"
+                                     Width="330"
+                                     Height="330"
+                                     Fill="Transparent"
+                                     Stroke="#E03030"
+                                     StrokeThickness="18" />
+                            <Line X1="83"
+                                  Y1="83"
+                                  X2="317"
+                                  Y2="317"
+                                  Stroke="#E03030"
+                                  StrokeThickness="18"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round" />
+                        </Canvas>
+                    </Viewbox>
+                </Grid>
+
+                <TextBlock Text="Discord RAM Limiter"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center" />
+                <TextBlock x:Name="StatusText"
+                           Text="Limiter Disabled"
+                           Margin="0,7,0,24"
+                           Foreground="#FF8F9B"
+                           FontSize="14"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center" />
+
+                <Button x:Name="LimiterToggleButton"
+                        Width="214"
+                        Height="74"
+                        Click="LimiterToggleButton_Click"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FocusVisualStyle="{x:Null}"
+                        OverridesDefaultStyle="True">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <ContentPresenter />
+                        </ControlTemplate>
+                    </Button.Template>
+
+                    <Grid Width="214" Height="74">
+                        <Border x:Name="ToggleGlow"
+                                Margin="7"
+                                CornerRadius="37"
+                                Background="#36CE7D">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="ToggleGlowEffect"
+                                                  BlurRadius="24"
+                                                  ShadowDepth="0"
+                                                  Opacity="0"
+                                                  Color="#36CE7D" />
+                            </Border.Effect>
+                        </Border>
+
+                        <Border x:Name="ToggleTrack"
+                                CornerRadius="37"
+                                BorderThickness="1">
+                            <Border.BorderBrush>
+                                <SolidColorBrush x:Name="ToggleTrackBorderBrush" Color="#463743" />
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <SolidColorBrush x:Name="ToggleTrackBrush" Color="#9B424C" />
+                            </Border.Background>
+                        </Border>
+
+                        <Border x:Name="ToggleThumb"
+                                Width="64"
+                                Height="64"
+                                Margin="5"
+                                HorizontalAlignment="Left"
+                                CornerRadius="32"
+                                Background="#F7F9FF">
+                            <Border.RenderTransform>
+                                <TranslateTransform x:Name="ToggleThumbTransform" X="0" />
+                            </Border.RenderTransform>
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="18"
+                                                  ShadowDepth="2"
+                                                  Opacity="0.28"
+                                                  Color="#000000" />
+                            </Border.Effect>
+                            <TextBlock x:Name="ToggleThumbLabel"
+                                       Text="OFF"
+                                       Foreground="#D84A57"
+                                       FontSize="16"
+                                       FontWeight="Black"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+                    </Grid>
+                </Button>
+
+                <Border Margin="0,30,0,0"
+                        Width="286"
+                        CornerRadius="18"
+                        Background="#1B2231"
+                        BorderBrush="#2A3448"
+                        BorderThickness="1"
+                        Padding="20,18">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="CURRENT"
+                                   Foreground="#8C98B3"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center" />
+                        <TextBlock x:Name="CurrentRamText"
+                                   Text="0 MB"
+                                   Margin="0,8,0,0"
+                                   FontSize="30"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center" />
+                        <TextBlock x:Name="ProcessCountText"
+                                   Text="No Discord process"
+                                   Margin="0,4,0,0"
+                                   Foreground="#8C98B3"
+                                   FontSize="12"
+                                   HorizontalAlignment="Center" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

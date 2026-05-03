@@ -1,0 +1,26 @@
+<Application x:Class="DiscordRamLimiter.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             ShutdownMode="OnExplicitShutdown">
+    <Application.Resources>
+        <FontFamily x:Key="AppFont">Segoe UI Variable Display, Segoe UI</FontFamily>
+
+        <SolidColorBrush x:Key="PanelBrush" Color="#161A24" />
+        <SolidColorBrush x:Key="MutedBrush" Color="#95A0B8" />
+        <SolidColorBrush x:Key="TextBrush" Color="#F4F7FF" />
+        <SolidColorBrush x:Key="LineBrush" Color="#273044" />
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="{StaticResource AppFont}" />
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="{StaticResource AppFont}" />
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+        </Style>
+    </Application.Resources>
+</Application>
