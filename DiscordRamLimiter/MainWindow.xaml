@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Discord RAM Limiter"
         Width="430"
-        Height="590"
+        Height="600"
         MinWidth="430"
-        MinHeight="590"
+        MinHeight="600"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -16,6 +16,46 @@
         Closing="Window_Closing"
         MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Window.Resources>
+        <Style x:Key="RoundCheckBoxStyle" TargetType="{x:Type CheckBox}">
+            <Setter Property="Foreground" Value="#AAB4CD" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <StackPanel Orientation="Horizontal">
+                            <Border x:Name="Circle"
+                            Width="18"
+                            Height="18"
+                            CornerRadius="9"
+                            BorderThickness="2"
+                            BorderBrush="#5865F2"
+                            Background="#1B2231">
+                                <Ellipse x:Name="Dot"
+                                 Width="8"
+                                 Height="8"
+                                 Fill="#36CE7D"
+                                 Opacity="0"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center" />
+                            </Border>
+                            <ContentPresenter Margin="8,0,0,0"
+                                      VerticalAlignment="Center" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Dot" Property="Opacity" Value="1" />
+                                <Setter TargetName="Circle" Property="BorderBrush" Value="#36CE7D" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Circle" Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="ChromeButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Width" Value="34" />
             <Setter Property="Height" Value="30" />
@@ -232,7 +272,7 @@
                     </Grid>
                 </Button>
 
-                <Border Margin="0,30,0,0"
+                <Border Margin="0,26,0,0"
                         Width="286"
                         CornerRadius="18"
                         Background="#1B2231"
@@ -259,6 +299,13 @@
                                    HorizontalAlignment="Center" />
                     </StackPanel>
                 </Border>
+
+                <CheckBox x:Name="AutoStartCheckBox"
+                          Content="Launch with Windows in tray"
+                          Margin="0,16,0,0"
+                          Click="AutoStartCheckBox_Click"
+                          Style="{StaticResource RoundCheckBoxStyle}"
+                          HorizontalAlignment="Center" />
             </StackPanel>
         </Grid>
     </Grid>

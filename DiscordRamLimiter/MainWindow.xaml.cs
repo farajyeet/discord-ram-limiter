@@ -2,6 +2,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
+using System.Security;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -24,23 +25,35 @@ public partial class MainWindow : Window, IDisposable
     private readonly DiscordLimiterService _limiterService = new();
     private readonly Forms.NotifyIcon _trayIcon;
     private readonly Drawing.Icon? _customTrayIcon;
+    private readonly bool _startMinimized;
+    private readonly Forms.ToolStripMenuItem _startupMenuItem;
     private bool _isExitRequested;
     private bool _isMinimizingToTray;
 
-    public MainWindow()
+    public MainWindow(bool startMinimized = false)
     {
+        _startMinimized = startMinimized;
+
         InitializeComponent();
         ApplyWindowIcon();
 
         _customTrayIcon = LoadTrayIcon();
-        _trayIcon = BuildTrayIcon(_customTrayIcon);
+        _trayIcon = BuildTrayIcon(_customTrayIcon, out _startupMenuItem);
         _limiterService.SnapshotUpdated += LimiterService_SnapshotUpdated;
     }
 
     private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
         await _limiterService.StartAsync();
-        AnimateToggle(isActive: false, durationMs: 1);
+        _limiterService.SetLimiterActive(_startMinimized);
+        AnimateToggle(_startMinimized, durationMs: 1);
+        UpdateStatus(_startMinimized);
+        RefreshStartupState();
+
+        if (_startMinimized)
+        {
+            MinimizeToTray(showNotification: false);
+        }
     }
 
     private void LimiterToggleButton_Click(object sender, RoutedEventArgs e)
@@ -141,10 +154,16 @@ public partial class MainWindow : Window, IDisposable
             : $"{megabytes:0.0} MB";
     }
 
-    private Forms.NotifyIcon BuildTrayIcon(Drawing.Icon? trayIcon)
+    private Forms.NotifyIcon BuildTrayIcon(Drawing.Icon? trayIcon, out Forms.ToolStripMenuItem startupMenuItem)
     {
         var menu = new Forms.ContextMenuStrip();
         menu.Items.Add("Open", null, (_, _) => ShowFromTray());
+        startupMenuItem = new Forms.ToolStripMenuItem("Launch at startup")
+        {
+            CheckOnClick = true
+        };
+        startupMenuItem.CheckedChanged += StartupMenuItem_CheckedChanged;
+        menu.Items.Add(startupMenuItem);
         menu.Items.Add("Exit", null, async (_, _) => await ExitApplicationAsync());
 
         var notifyIcon = new Forms.NotifyIcon
@@ -157,6 +176,57 @@ public partial class MainWindow : Window, IDisposable
 
         notifyIcon.DoubleClick += (_, _) => ShowFromTray();
         return notifyIcon;
+    }
+
+    private void AutoStartCheckBox_Click(object sender, RoutedEventArgs e)
+    {
+        SetLaunchAtStartup(AutoStartCheckBox.IsChecked == true);
+    }
+
+    private void StartupMenuItem_CheckedChanged(object? sender, EventArgs e)
+    {
+        SetLaunchAtStartup(_startupMenuItem.Checked);
+    }
+
+    private void RefreshStartupState()
+    {
+        var isEnabled = StartupService.IsLaunchAtStartupEnabled();
+        AutoStartCheckBox.IsChecked = isEnabled;
+        _startupMenuItem.CheckedChanged -= StartupMenuItem_CheckedChanged;
+        _startupMenuItem.Checked = isEnabled;
+        _startupMenuItem.CheckedChanged += StartupMenuItem_CheckedChanged;
+    }
+
+    private void SetLaunchAtStartup(bool isEnabled)
+    {
+        try
+        {
+            StartupService.SetLaunchAtStartup(isEnabled);
+            RefreshStartupState();
+        }
+        catch (UnauthorizedAccessException)
+        {
+            RefreshStartupState();
+            ShowStartupError();
+        }
+        catch (IOException)
+        {
+            RefreshStartupState();
+            ShowStartupError();
+        }
+        catch (SecurityException)
+        {
+            RefreshStartupState();
+            ShowStartupError();
+        }
+    }
+
+    private void ShowStartupError()
+    {
+        _trayIcon.BalloonTipTitle = "Discord RAM Limiter";
+        _trayIcon.BalloonTipText = "Could not update Windows startup settings.";
+        _trayIcon.BalloonTipIcon = Forms.ToolTipIcon.Warning;
+        _trayIcon.ShowBalloonTip(2200);
     }
 
     private static string GetAppIconPath()
@@ -296,9 +366,9 @@ public partial class MainWindow : Window, IDisposable
         MinimizeToTray();
     }
 
-    private void CloseButton_Click(object sender, RoutedEventArgs e)
+    private async void CloseButton_Click(object sender, RoutedEventArgs e)
     {
-        MinimizeToTray();
+        await ExitApplicationAsync();
     }
 
     private void Window_Closing(object? sender, CancelEventArgs e)
@@ -312,7 +382,7 @@ public partial class MainWindow : Window, IDisposable
         MinimizeToTray();
     }
 
-    private void MinimizeToTray()
+    private void MinimizeToTray(bool showNotification = true)
     {
         if (_isMinimizingToTray || !IsVisible)
         {
@@ -324,7 +394,10 @@ public partial class MainWindow : Window, IDisposable
         {
             WindowState = WindowState.Minimized;
             Hide();
-            ShowTrayNotification();
+            if (showNotification)
+            {
+                ShowTrayNotification();
+            }
         }
         finally
         {
