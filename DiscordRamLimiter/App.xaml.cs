@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Runtime.Versioning;
+using DiscordRamLimiter.Services;
 
 namespace DiscordRamLimiter;
 
@@ -12,7 +13,8 @@ public partial class App : System.Windows.Application
     {
         base.OnStartup(e);
 
-        _mainWindow = new MainWindow();
+        var startMinimized = e.Args.Any(arg => string.Equals(arg, StartupService.MinimizedArgument, StringComparison.OrdinalIgnoreCase));
+        _mainWindow = new MainWindow(startMinimized);
         _mainWindow.Show();
     }
 
