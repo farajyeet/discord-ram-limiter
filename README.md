@@ -12,7 +12,7 @@ The app uses the native Windows `SetProcessWorkingSetSize(process.Handle, -1, -1
 
 Download the latest build from the GitHub Releases page:
 
-[Download from GitHub Releases](https://github.com/farajyeet/discord-ram-limiter/releases/tag/1)
+[Download from GitHub Releases](https://github.com/farajyeet/discord-ram-limiter/releases)
 
 ## Antivirus Note
 
