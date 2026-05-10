@@ -14,6 +14,12 @@ Download the latest build from the GitHub Releases page:
 
 [Download from GitHub Releases](https://github.com/farajyeet/discord-ram-limiter/releases/tag/1)
 
+## Antivirus Note
+
+This app is a small unsigned Windows executable. Some antivirus scanners may flag unsigned apps heuristically, especially when they inspect running processes. The release build is not packed or obfuscated, and the source code is available in this repository.
+
+You __do not need__ to disable your antivirus to use this app. If you are unsure, do not run the release build; build the app from source and compare it with the release checksum.
+
 ## Features
 
 - Modern WPF desktop interface.
